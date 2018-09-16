@@ -1,0 +1,50 @@
+%h2 Items
+.row
+  - @items.each do |item|
+    .col-sm-4
+      .item
+        .item-image
+          %i.fas.fa-tag
+        %hr
+        = form_for(@basket, url: add_to_basket_items_path, method: :post, autocomplete: "off", remote: true) do |f|
+          .item-details
+            .item-name
+              %strong= item.name
+            .item-price= number_to_currency(item.price, unit: "£")
+            
+            = f.hidden_field :item_id, value: item.id
+            = f.number_field :quantity, class: "quantity", min: "1", value: "1"
+
+            .add-to-basket
+              = f.submit "Add to Basket", class: "btn btn-success" 
+%hr
+.row
+  %section.basket
+    %summary
+      %h2 Basket Details
+    %details      
+      .basket-details        
+        %table.basket-table{width: "100%", class: @baskets.present? ? "" : "hide"}
+          %thead
+            %tr
+              - th = ["Quantity", "Item", "Price", "VAT", "Discount", "Sub Total"]
+              - th.each do |col|
+                %th=col
+          %tbody.table_body
+            - if @baskets.present?
+              = render partial: "items/items", collection: @baskets, as: :basket                  
+            - else
+              .no-item
+                %h3 
+                  %i Basket has no item
+
+        .total{class: @baskets.present? ? "" : "hide"}
+          %strong
+            = "TOTAL:  #{number_to_currency(Basket.total, unit: "£")}"
+        
+
+        .clear_basket{class: @baskets.present? ? "" : "hide"}
+          = link_to clear_basket_items_path, class: "btn btn-success", remote: true, method: :delete, data: { confirm: "Are you sure?"} do
+            Clear Basket
+      
+

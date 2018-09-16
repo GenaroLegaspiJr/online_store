@@ -1,0 +1,7 @@
+= content_tag :tr do
+  %td= basket.quantity
+  %td= basket.item.name
+  %td= number_to_currency(basket.item.price, unit: "£")
+  %td= number_to_currency(basket.item.vat.rate, unit: "£")                
+  %td= number_to_currency(basket.discount, unit: "£")
+  %td= number_to_currency(basket.sub_total, unit: "£")

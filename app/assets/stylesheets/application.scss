@@ -1,0 +1,70 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap/theme';
+
+nav {
+	img {
+		max-width: 48px;
+	}
+}
+
+body {
+	background-color: #f5f5f5;
+
+  .hide {
+    display: none;
+  }
+
+  .item {
+    background-color: #fff;
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.21);
+    -moz-box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.21);
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.21);
+    padding: 40px;
+    margin-top: 20px;
+    border-radius: 5px;
+
+    .item-image {
+      i {
+        font-size: 10em;
+      }
+    }
+
+    input.quantity {
+      text-align: center;
+      width: 53px;
+      padding: 5px;
+      padding-left: 13px;
+      margin-top: 15px;
+    }   
+
+    .add-to-basket {
+      margin-top: 15px;
+    }
+
+  }
+
+  .basket {
+    padding: 50px;
+
+    .basket-details {
+      padding: 20px;
+    }
+
+    .total {
+      margin-top: 30px;
+      text-align: right;
+      margin-right: 95px;
+    }
+
+    .no-item {
+      text-align: center;
+    }
+
+    .clear_basket {
+      text-align: center;
+      margin-top: 30px;
+    }
+  }
+}
