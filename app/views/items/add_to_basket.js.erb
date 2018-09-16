@@ -2,6 +2,7 @@ if(<%= @basket.errors.present? %>){
 	swal("Error!", "<%= j @basket.errors.full_messages.to_sentence %>", "error");
 }else{  	
   $(".basket-table, .total, .clear_basket").removeClass("hide");
+  $(".no-item").addClass("hide");
   $(".basket-table tbody, .total").empty();
   $(".basket-table tbody").html('<%= j(render partial: "items/items", collection: @baskets, as: :basket) %>')
   $(".total").append("<strong>TOTAL: <%= j number_to_currency(Basket.total, unit: '£') %> </strong>");
